@@ -34,6 +34,7 @@ Projeto de automação de testes para a API [ServeRest](https://serverest.dev), 
     mvn clean install
 
 
+
 🚀 Execução dos Testes
 
 1. Executar todos os testes:
@@ -63,9 +64,11 @@ Projeto de automação de testes para a API [ServeRest](https://serverest.dev), 
     docker-compose up -d
 
 2. Acesse:
+
 Jenkins: http://localhost:8080
 
 Allure Report: http://localhost:5050
+
 
 
 🔄 Pipeline CI/CD
