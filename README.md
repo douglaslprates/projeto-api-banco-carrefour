@@ -33,8 +33,6 @@ Projeto de automação de testes para a API [ServeRest](https://serverest.dev), 
    ```bash
     mvn clean install
 
-
-
 🚀 Execução dos Testes
 
 1. Executar todos os testes:
@@ -49,13 +47,11 @@ Projeto de automação de testes para a API [ServeRest](https://serverest.dev), 
    ```bash
     mvn allure:serve
 
-
 📊 Relatórios
 
 1. Para visualizar:
    ```bash
     allure serve target/allure-results
-
 
 🐳 Execução com Docker
 
@@ -68,8 +64,6 @@ Projeto de automação de testes para a API [ServeRest](https://serverest.dev), 
 Jenkins: http://localhost:8080
 
 Allure Report: http://localhost:5050
-
-
 
 🔄 Pipeline CI/CD
 
