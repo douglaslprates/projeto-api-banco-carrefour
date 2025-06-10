@@ -11,9 +11,7 @@ import org.junit.jupiter.api.*;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.IntStream;
 
-import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.awaitility.Awaitility.await;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -78,20 +76,23 @@ public class UserCrudTest {
     @Order(4)
     @DisplayName("PUT /usuarios/{id} - Atualizar usuário completo")
     @Severity(SeverityLevel.CRITICAL)
-    void testUpdateUserFull() {
+    void testUpdateUser() {
         UserDTO updatedUser = UserDTO.builder()
                 .nome("Nome Atualizado")
-                .email("atualizado@email.com")
+                .email("atualizado@gmail.com")
                 .password("novaSenha123")
                 .administrador("false")
                 .build();
 
-        Response response = UserClient.updateUser(userId, updatedUser, authToken);
-
-        assertEquals(200, response.getStatusCode());
-
+        Response updateResponse = UserClient.updateUser(userId, updatedUser, authToken);
         Response getResponse = UserClient.getUser(userId, authToken);
-        assertEquals("Nome Atualizado", getResponse.jsonPath().getString("nome"));
+
+        assertAll("Atualização de usuário",
+                () -> assertEquals(200, updateResponse.getStatusCode()),
+                () -> assertEquals("Registro alterado com sucesso",
+                        updateResponse.jsonPath().getString("message")),
+                () -> assertEquals("false", getResponse.jsonPath().getString("administrador"))
+        );
     }
 
     @Test

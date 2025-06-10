@@ -30,4 +30,26 @@ pipeline {
             }
         }
     }
+
+    post {
+		always {
+			archiveArtifacts artifacts: 'target/allure-results/**/*', fingerprint: true
+            cleanWs()
+        }
+        success {
+			script {
+				emailext body: 'Testes executados com sucesso! Relatório: ${BUILD_URL}Allure_20Report',
+                subject: '[SUCCESS] API Tests - ${JOB_NAME}',
+                to: 'team@example.com'
+            }
+        }
+        failure {
+			script {
+				emailext body: 'Falha nos testes: ${BUILD_URL}console',
+                subject: '[FAILURE] API Tests - ${JOB_NAME}',
+                to: 'team@example.com'
+            }
+        }
+    }
 }
+
