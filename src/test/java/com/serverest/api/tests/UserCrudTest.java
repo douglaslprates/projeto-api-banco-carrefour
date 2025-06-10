@@ -77,21 +77,27 @@ public class UserCrudTest {
     @DisplayName("PUT /usuarios/{id} - Atualizar usuário completo")
     @Severity(SeverityLevel.CRITICAL)
     void testUpdateUser() {
-        UserDTO updatedUser = UserDTO.builder()
-                .nome("Nome Atualizado")
-                .email("atualizado@gmail.com")
-                .password("novaSenha123")
-                .administrador("false")
-                .build();
+        UserDTO randomUser = TestDataGenerator.generateRandomUser();
+
+        UserDTO updatedUser = new UserDTO();
+        updatedUser.setNome(randomUser.getNome());
+        updatedUser.setEmail(randomUser.getEmail());
+        updatedUser.setPassword(randomUser.getPassword());
+        updatedUser.setAdministrador("false"); // Força não-admin
 
         Response updateResponse = UserClient.updateUser(userId, updatedUser, authToken);
         Response getResponse = UserClient.getUser(userId, authToken);
 
-        assertAll("Atualização de usuário",
+        assertAll("Validação da atualização",
                 () -> assertEquals(200, updateResponse.getStatusCode()),
                 () -> assertEquals("Registro alterado com sucesso",
                         updateResponse.jsonPath().getString("message")),
-                () -> assertEquals("false", getResponse.jsonPath().getString("administrador"))
+                () -> assertEquals(updatedUser.getNome(),
+                        getResponse.jsonPath().getString("nome")),
+                () -> assertEquals(updatedUser.getEmail(),
+                        getResponse.jsonPath().getString("email")),
+                () -> assertEquals("false",
+                        getResponse.jsonPath().getString("administrador"))
         );
     }
 
