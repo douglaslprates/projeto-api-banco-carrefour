@@ -121,6 +121,7 @@ public class UserCrudTest {
     @DisplayName("Rate Limiting - Validar limite de requisições")
     @Severity(SeverityLevel.MINOR)
     void testRateLimiting() {
+
         Response initialRequest = UserClient.getAllUsers(authToken);
         assertEquals(200, initialRequest.getStatusCode(), "A API deveria responder normalmente antes do limite");
 
