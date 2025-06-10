@@ -1,0 +1,41 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="VulnerableLibrariesLocal" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="isIgnoringEnabled" value="true" />
+      <option name="ignoredModules">
+        <list>
+          <option value="projeto-api-banco-carrefour" />
+          <option value="projeto-api-banco-carrefour" />
+          <option value="projeto-api-banco-carrefour" />
+          <option value="projeto-api-banco-carrefour" />
+          <option value="projeto-api-banco-carrefour" />
+          <option value="projeto-api-banco-carrefour" />
+          <option value="projeto-api-banco-carrefour" />
+        </list>
+      </option>
+      <option name="ignoredPackages">
+        <list>
+          <option value="commons-codec:commons-codec:1.11" />
+          <option value="com.fasterxml.jackson.core:jackson-core:2.14.0" />
+          <option value="commons-io:commons-io:2.6" />
+          <option value="org.yaml:snakeyaml:1.23" />
+          <option value="junit:junit:4.10" />
+          <option value="com.fasterxml.jackson.core:jackson-databind:2.11.0" />
+          <option value="com.fasterxml.jackson.core:jackson-core:2.11.0" />
+        </list>
+      </option>
+      <option name="ignoredReasons">
+        <list>
+          <option value="Fixed in branch" />
+          <option value="Not exploitable" />
+          <option value="Fixed in branch" />
+          <option value="Fixed in branch" />
+          <option value="In progress" />
+          <option value="In progress" />
+          <option value="Fixed in branch" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
